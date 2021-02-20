@@ -28,7 +28,7 @@ const Main = (props) => {
         <Container>
           <InputGroup>
             <InputGroupAddon addonType="prepend">
-              <InputGroupText>Search Upsplash</InputGroupText>
+              <InputGroupText>Search Unsplash</InputGroupText>
             </InputGroupAddon>
             <Input
               placeholder="Wanna see a cool pic?"

@@ -1,9 +1,5 @@
-# TARS Demo
-
-The project is a single page react app created to showcase the working of Unsplash API to get images from the server. 
-## Folder Structure
-
-```bash
+.
+├── folderstructure.txt
 ├── package.json
 ├── public
 │   ├── favicon.ico
@@ -31,19 +27,5 @@ The project is a single page react app created to showcase the working of Unspla
 │   ├── setupTests.js
 │   └── store.js
 └── yarn.lock
-```
 
-1. **package.json** - list of node modules and necessary scripts
-1. **public** - entry point of app
-1. **src** - source files of this project
-
-## Initial setup
-
-1. Get the repository locally
-    > ```$ git clone https://github.com/UnresolvedCold/TARSDemo.git```
-
-1. Install necessary node modules
-    >```$ npm install```  
-
-1. Start the server
-    > ```$ npm start```
+4 directories, 24 files
