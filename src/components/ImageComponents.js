@@ -1,56 +1,41 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import {
-  Container,
-  ListGroup,
-  ListGroupItem,
-  Button,
-  Card,
-  CardImg,
-  CardBody,
-  CardSubtitle,
-  CardText,
-} from "reactstrap";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { v1 as uuid } from "uuid";
+import Img from "react-cool-img";
+import loadingImage from "../assets/animations/loading.gif";
+import errorImage from "../assets/animations/error.png";
 
 const MAIN = (props) => {
   return (
-    <Container>
-      <ListGroup>
-        <TransitionGroup className="shopping-list">
-          <ListGroup>
-            <Card style={{ display: "flex", flexDirection: "row" }}>
-              <CardImg
-                top
-                style={{ width: 150, height: 150 }}
-                src={props.image.urls.thumb}
-                alt="Card image cap"
-              />
-              <CardBody
-                style={{
-                  flex: 1,
-                  justifySelf: "flex-end",
-                }}
-              >
-                <div style={{ flex: 1 }}></div>
-                <CardSubtitle tag="h6" className="mb-2 text-muted">
-                  Uploaded by {props.image.user.username}
-                </CardSubtitle>
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <img
-                    src="https://img.flaticon.com/icons/png/512/25/25297.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF"
-                    alt="new"
-                    style={{ width: 30, height: 20 }}
-                  />
-                  <CardText>{props.image.likes}</CardText>
-                </div>
-              </CardBody>
-            </Card>
-          </ListGroup>
-        </TransitionGroup>
-      </ListGroup>
-    </Container>
+    <div style={{ display: "inline-block", margin: 20 }}>
+      <Img
+        placeholder={loadingImage}
+        src={props.image.urls.thumb}
+        error={errorImage}
+        style={{ width: 200, height: 200 }}
+      />
+      <div
+        style={{
+          zIndex: 100,
+          width: 200,
+          marginTop: -50,
+          padding: 10,
+          flexDirection: "row",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
+          <img
+            src="http://clipart-library.com/images_k/thumbs-up-transparent-background/thumbs-up-transparent-background-17.png"
+            alt="new"
+            style={{ width: 20, height: 20, marginRight: 5 }}
+          />
+          <span style={{ color: "white", marginRight: 5, flex: 1 }}>
+            {props.image.likes}
+          </span>
+          <span style={{ color: "white" }}>{props.image.user.username}</span>
+        </div>
+      </div>
+    </div>
   );
 };
 

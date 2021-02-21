@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
+import { v1 as uuid } from "uuid";
 import {
   Collapse,
   Navbar,
@@ -15,6 +16,8 @@ import {
   InputGroupAddon,
   Input,
 } from "reactstrap";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+
 import ImageComponents from "./ImageComponents";
 
 const Main = (props) => {
@@ -33,12 +36,15 @@ const Main = (props) => {
             <Input
               placeholder="Wanna see a cool pic?"
               onChange={(e) => {
-                const url = `https://api.unsplash.com/search/photos?page=1&query=${
+                const url = `https://api.unsplash.com/search/photos?page=1&per_page=50&query=${
                   e.target.value
-                }&client_id=${require("../constants").ID}`;
+                }&quantity=50&order_by=latest&client_id=${
+                  require("../constants").ID
+                }`;
                 axios
                   .get(url)
                   .then((res) => {
+                    console.log(res.data.results.length);
                     setResult(res.data.results);
                   })
                   .catch((err) => {
@@ -59,9 +65,38 @@ const Main = (props) => {
           </Collapse>
         </Container>
       </Navbar>
-      {result.map((image) => {
-        return <ImageComponents image={image} />;
-      })}
+      <div style={{ marginLeft: 20, marginRight: 20 }}>
+        {result.length > 0 ? (
+          result.map((image) => {
+            return <ImageComponents key={uuid()} image={image} />;
+          })
+        ) : (
+          <div
+            style={{
+              position: "absolute",
+              top: "30%",
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+          >
+            <Player
+              autoplay
+              loop
+              src="https://assets1.lottiefiles.com/packages/lf20_GlZGOi.json"
+              style={{
+                height: "300px",
+                width: "300px",
+              }}
+            >
+              <Controls
+                visible={false}
+                buttons={["play", "repeat", "frame", "debug"]}
+              />
+            </Player>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
