@@ -24,9 +24,10 @@ const MAIN = (props) => {
         }}
       >
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
-          <img
+          <Img
+            placeholder={loadingImage}
             src="http://clipart-library.com/images_k/thumbs-up-transparent-background/thumbs-up-transparent-background-17.png"
-            alt="new"
+            error={errorImage}
             style={{ width: 20, height: 20, marginRight: 5 }}
           />
           <span style={{ color: "white", marginRight: 5, flex: 1 }}>
