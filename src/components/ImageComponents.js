@@ -26,7 +26,7 @@ const MAIN = (props) => {
         <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
           <Img
             placeholder={loadingImage}
-            src="http://clipart-library.com/images_k/thumbs-up-transparent-background/thumbs-up-transparent-background-17.png"
+            src={require("./like.png")}
             error={errorImage}
             style={{ width: 20, height: 20, marginRight: 5 }}
           />
